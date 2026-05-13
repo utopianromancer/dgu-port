@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DGU Portfolio</title>
+  <meta name="description" content="동국대 동기 회사 기반 DGU 주식 포트폴리오 대시보드" />
+  <meta name="theme-color" content="#111827" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --primary: #111827;
+      --accent: #f97316;
+      --green: #16a34a;
+      --red: #dc2626;
+      --shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+      background: radial-gradient(circle at top left, rgba(249, 115, 22, .15), transparent 30%), var(--bg);
+      color: var(--text);
+    }
+
+    .app {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      padding: 18px 14px 32px;
+    }
+
+    header {
+      display: grid;
+      gap: 12px;
+      padding: 12px 2px 18px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      gap: 8px;
+      border: 1px solid rgba(17, 24, 39, .08);
+      background: rgba(255,255,255,.72);
+      border-radius: 999px;
+      padding: 6px 10px;
+      color: var(--muted);
+      font-size: 12px;
+      backdrop-filter: blur(10px);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(28px, 7vw, 54px);
+      line-height: 1.03;
+      letter-spacing: -0.05em;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 12px 0 16px;
+    }
+
+    .summary-card,
+    .panel {
+      background: rgba(255,255,255,.9);
+      border: 1px solid rgba(17,24,39,.08);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .summary-card {
+      padding: 14px;
+      min-height: 96px;
+    }
+
+    .summary-label {
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .summary-value {
+      font-size: 22px;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .positive { color: var(--green); }
+    .negative { color: var(--red); }
+    .muted { color: var(--muted); }
+
+    .panel {
+      padding: 14px;
+      margin-bottom: 14px;
+      overflow: hidden;
+    }
+
+    .toolbar {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .toolbar-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding-bottom: 2px;
+    }
+    .toolbar-row::-webkit-scrollbar { display: none; }
+
+    button,
+    .chip {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      border-radius: 999px;
+      padding: 9px 12px;
+      font-weight: 700;
+      font-size: 13px;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    button.active,
+    .chip.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .segmented {
+      display: inline-flex;
+      background: #f3f4f6;
+      padding: 4px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+    }
+    .segmented button {
+      border: 0;
+      background: transparent;
+      padding: 8px 12px;
+    }
+    .segmented button.active { background: #fff; color: var(--text); box-shadow: 0 5px 14px rgba(15,23,42,.08); }
+
+    .chart-wrap {
+      position: relative;
+      height: 440px;
+      min-height: 320px;
+    }
+
+    .asset-filter {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      max-height: 220px;
+      overflow: auto;
+      padding: 2px 2px 4px;
+    }
+
+    .asset-toggle {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 10px;
+      background: #fff;
+      font-size: 13px;
+      min-height: 44px;
+    }
+    .asset-toggle input { accent-color: var(--primary); }
+    .asset-toggle span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+    .table-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .table-head h2 { margin: 0; font-size: 18px; letter-spacing: -0.03em; }
+    .table-head small { color: var(--muted); }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+      background: #fff;
+    }
+    th, td {
+      border-bottom: 1px solid var(--line);
+      padding: 12px 10px;
+      text-align: right;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+    th:first-child, td:first-child,
+    th:nth-child(2), td:nth-child(2) { text-align: left; }
+    th {
+      color: var(--muted);
+      font-size: 12px;
+      background: #f9fafb;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+    tr:last-child td { border-bottom: 0; }
+    .name-cell { font-weight: 800; color: var(--text); }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 4px 8px;
+      background: #f3f4f6;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .notice {
+      display: none;
+      margin: 14px 0;
+      padding: 14px;
+      border-radius: 16px;
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      color: #9a3412;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    footer {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+      padding: 6px 2px 30px;
+    }
+
+    @media (min-width: 760px) {
+      .app { padding: 28px 22px 50px; }
+      header { grid-template-columns: 1.1fr .9fr; align-items: end; }
+      .summary-grid { grid-template-columns: repeat(4, 1fr); }
+      .toolbar { grid-template-columns: 1fr auto; align-items: center; }
+      .asset-filter { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .panel { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header>
+      <div>
+        <div class="eyebrow">🎓 DGU Portfolio · base 100</div>
+        <h1>동국대 동기 회사 포트폴리오</h1>
+        <p class="subtitle">2020년 이후 첫 거래일 종가를 시작점 100으로 맞춰 종목별 성장률을 비교합니다. DGU 포트폴리오는 각 구성 종목 1주씩 매수한 것으로 계산합니다.</p>
+      </div>
+      <p class="subtitle" id="updateText">데이터를 불러오는 중입니다.</p>
+    </header>
+
+    <section class="summary-grid" aria-label="요약 지표">
+      <article class="summary-card">
+        <div class="summary-label">DGU 수익률</div>
+        <div class="summary-value" id="sumReturn">-</div>
+      </article>
+      <article class="summary-card">
+        <div class="summary-label">초기 투자금</div>
+        <div class="summary-value" id="sumInitial">-</div>
+      </article>
+      <article class="summary-card">
+        <div class="summary-label">현재 평가금액</div>
+        <div class="summary-value" id="sumCurrent">-</div>
+      </article>
+      <article class="summary-card">
+        <div class="summary-label">최고 수익 종목</div>
+        <div class="summary-value" id="sumBest">-</div>
+      </article>
+    </section>
+
+    <div class="notice" id="notice"></div>
+
+    <section class="panel">
+      <div class="toolbar">
+        <div class="toolbar-row" id="rangeButtons" aria-label="조회 기간 선택"></div>
+        <div class="segmented" id="intervalButtons" aria-label="집계 단위 선택">
+          <button data-interval="day" class="active">일</button>
+          <button data-interval="month">월</button>
+          <button data-interval="year">년</button>
+        </div>
+      </div>
+      <div class="toolbar-row" style="margin-bottom:12px">
+        <button id="selectCore" class="active">대표선만</button>
+        <button id="selectAll">전체 표시</button>
+        <button id="clearStocks">개별종목 숨김</button>
+      </div>
+      <div class="chart-wrap">
+        <canvas id="portfolioChart"></canvas>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="table-head">
+        <div>
+          <h2>표시 종목 선택</h2>
+          <small>모바일에서는 너무 많은 선을 켜면 차트가 복잡해질 수 있습니다.</small>
+        </div>
+      </div>
+      <div class="asset-filter" id="assetFilter"></div>
+    </section>
+
+    <section class="panel">
+      <div class="table-head">
+        <div>
+          <h2>상세 데이터</h2>
+          <small id="tableMeta">수익률 기준 내림차순</small>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>구분</th>
+              <th>종목</th>
+              <th>티커</th>
+              <th>시작일</th>
+              <th>시작가</th>
+              <th>최신일</th>
+              <th>최신가</th>
+              <th>수익률</th>
+              <th>손익</th>
+            </tr>
+          </thead>
+          <tbody id="metricRows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer>
+      <strong>주의:</strong> 본 페이지는 동문끼리 확인하는 개인용 포트폴리오 대시보드 예시이며 투자 권유가 아닙니다. 장기 비교 목적상 차트는 모든 종목과 지수를 시작점 100으로 정규화합니다. 배당, 세금, 거래비용은 반영하지 않습니다.
+    </footer>
+  </main>
+
+  <script>
+    const state = {
+      data: null,
+      chart: null,
+      range: 'MAX',
+      interval: 'day',
+      selected: new Set(['DGU_PORTFOLIO', 'KOSPI', 'SP500', 'NASDAQ'])
+    };
+
+    const RANGES = [
+      ['1M', '1개월'], ['3M', '3개월'], ['6M', '6개월'], ['YTD', 'YTD'],
+      ['1Y', '1년'], ['3Y', '3년'], ['5Y', '5년'], ['10Y', '10년'], ['MAX', '전체']
+    ];
+
+    const COLORS = {
+      DGU_PORTFOLIO: '#111827',
+      KOSPI: '#2563eb',
+      SP500: '#7c3aed',
+      NASDAQ: '#db2777',
+      KIA: '#0891b2',
+      SHINHAN: '#0f766e',
+      AMOREPACIFIC: '#c026d3',
+      SKYLIFE: '#4f46e5',
+      CJENM: '#9333ea',
+      SHINWON: '#f97316',
+      DONGYANG_EXP: '#92400e',
+      UNID: '#16a34a',
+      HANSSEM: '#475569',
+      SEOYONEHWA: '#dc2626',
+      SAMYANGFOODS: '#ea580c'
+    };
+
+    const fmtKRW = new Intl.NumberFormat('ko-KR', { maximumFractionDigits: 0 });
+    const fmtNum = new Intl.NumberFormat('ko-KR', { maximumFractionDigits: 2 });
+
+    function toDate(s) {
+      return new Date(s + 'T00:00:00');
+    }
+
+    function addMonths(date, months) {
+      const d = new Date(date);
+      d.setMonth(d.getMonth() + months);
+      return d;
+    }
+
+    function getMaxDate() {
+      const allDates = Object.values(state.data.series).flatMap(rows => rows.length ? [rows[rows.length - 1][0]] : []);
+      return toDate(allDates.sort().at(-1));
+    }
+
+    function getStartDateForRange(range) {
+      const end = getMaxDate();
+      if (range === '1M') return addMonths(end, -1);
+      if (range === '3M') return addMonths(end, -3);
+      if (range === '6M') return addMonths(end, -6);
+      if (range === 'YTD') return new Date(end.getFullYear(), 0, 1);
+      if (range === '1Y') return addMonths(end, -12);
+      if (range === '3Y') return addMonths(end, -36);
+      if (range === '5Y') return addMonths(end, -60);
+      if (range === '10Y') return addMonths(end, -120);
+      return toDate('2020-01-01');
+    }
+
+    function resample(rows, interval) {
+      if (interval === 'day') return rows;
+      const buckets = new Map();
+      for (const row of rows) {
+        const [date] = row;
+        const key = interval === 'month' ? date.slice(0, 7) : date.slice(0, 4);
+        buckets.set(key, row); // last trading point in bucket
+      }
+      return Array.from(buckets.values());
+    }
+
+    function getChartRows(assetId) {
+      const start = getStartDateForRange(state.range);
+      const rows = state.data.series[assetId] || [];
+      const filtered = rows.filter(([d]) => toDate(d) >= start);
+      return resample(filtered, state.interval);
+    }
+
+    function pctClass(v) {
+      return Number(v) >= 0 ? 'positive' : 'negative';
+    }
+
+    function formatPct(v) {
+      if (v === null || v === undefined || Number.isNaN(Number(v))) return '-';
+      const n = Number(v);
+      return `${n >= 0 ? '+' : ''}${fmtNum.format(n)}%`;
+    }
+
+    function formatPrice(v, kind) {
+      if (v === null || v === undefined) return '-';
+      return kind === 'benchmark' ? fmtNum.format(v) : fmtKRW.format(v);
+    }
+
+    function kindLabel(kind) {
+      if (kind === 'portfolio') return '포트폴리오';
+      if (kind === 'benchmark') return '지수';
+      return '종목';
+    }
+
+    function renderRangeButtons() {
+      const wrap = document.getElementById('rangeButtons');
+      wrap.innerHTML = RANGES.map(([key, label]) => `<button data-range="${key}" class="${state.range === key ? 'active' : ''}">${label}</button>`).join('');
+      wrap.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.range = btn.dataset.range;
+          renderRangeButtons();
+          updateChart();
+        });
+      });
+    }
+
+    function renderAssetFilter() {
+      const wrap = document.getElementById('assetFilter');
+      const assets = state.data.assets;
+      wrap.innerHTML = assets.map(a => `
+        <label class="asset-toggle" title="${a.name}">
+          <input type="checkbox" value="${a.id}" ${state.selected.has(a.id) ? 'checked' : ''} />
+          <span>${a.name}</span>
+          <span class="tag">${kindLabel(a.kind)}</span>
+        </label>
+      `).join('');
+      wrap.querySelectorAll('input').forEach(input => {
+        input.addEventListener('change', () => {
+          input.checked ? state.selected.add(input.value) : state.selected.delete(input.value);
+          updateChart();
+        });
+      });
+    }
+
+    function renderSummary() {
+      const dgu = state.data.metrics.find(m => m.id === 'DGU_PORTFOLIO');
+      const stockMetrics = state.data.metrics.filter(m => m.kind === 'stock');
+      const best = stockMetrics.slice().sort((a,b) => b.returnPct - a.returnPct)[0];
+
+      document.getElementById('sumReturn').textContent = formatPct(dgu?.returnPct);
+      document.getElementById('sumReturn').className = `summary-value ${pctClass(dgu?.returnPct)}`;
+      document.getElementById('sumInitial').textContent = dgu ? `${fmtKRW.format(dgu.initialInvested)}원` : '-';
+      document.getElementById('sumCurrent').textContent = dgu ? `${fmtKRW.format(dgu.currentValue)}원` : '-';
+      document.getElementById('sumBest').innerHTML = best ? `<span class="${pctClass(best.returnPct)}">${best.name}</span>` : '-';
+    }
+
+    function renderTable() {
+      const tbody = document.getElementById('metricRows');
+      const sorted = state.data.metrics.slice().sort((a, b) => b.returnPct - a.returnPct);
+      tbody.innerHTML = sorted.map(m => `
+        <tr>
+          <td><span class="tag">${kindLabel(m.kind)}</span></td>
+          <td class="name-cell">${m.name}</td>
+          <td class="muted">${m.ticker}</td>
+          <td>${m.startDate}</td>
+          <td>${formatPrice(m.startPrice, m.kind)}</td>
+          <td>${m.latestDate}</td>
+          <td>${formatPrice(m.latestPrice, m.kind)}</td>
+          <td class="${pctClass(m.returnPct)}"><strong>${formatPct(m.returnPct)}</strong></td>
+          <td class="${m.kind === 'benchmark' ? 'muted' : pctClass(m.profit)}">${m.kind === 'benchmark' ? '-' : fmtKRW.format(Math.round(m.profit || 0)) + '원'}</td>
+        </tr>
+      `).join('');
+    }
+
+    function makeDataset(asset) {
+      const rows = getChartRows(asset.id);
+      return {
+        label: asset.name,
+        data: rows.map(([d, normalized]) => ({ x: d, y: normalized })),
+        borderColor: COLORS[asset.id] || '#64748b',
+        backgroundColor: COLORS[asset.id] || '#64748b',
+        borderWidth: asset.kind === 'portfolio' ? 3 : 2,
+        pointRadius: 0,
+        pointHoverRadius: 4,
+        tension: 0.22,
+        spanGaps: true
+      };
+    }
+
+    function updateChart() {
+      if (!state.chart) return;
+      const assets = state.data.assets.filter(a => state.selected.has(a.id));
+      state.chart.data.datasets = assets.map(makeDataset);
+      state.chart.options.scales.x.time.unit = state.interval === 'day' ? false : state.interval;
+      state.chart.update();
+      renderAssetFilter();
+    }
+
+    function initChart() {
+      const ctx = document.getElementById('portfolioChart');
+      state.chart = new Chart(ctx, {
+        type: 'line',
+        data: { datasets: [] },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode: 'nearest', intersect: false, axis: 'x' },
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { usePointStyle: true, boxWidth: 8, boxHeight: 8 }
+            },
+            tooltip: {
+              callbacks: {
+                label: ctx => `${ctx.dataset.label}: ${fmtNum.format(ctx.parsed.y)} (${formatPct(ctx.parsed.y - 100)})`
+              }
+            }
+          },
+          scales: {
+            x: {
+              type: 'timeseries',
+              time: { tooltipFormat: 'yyyy-MM-dd' },
+              grid: { display: false },
+              ticks: { maxRotation: 0, autoSkip: true, maxTicksLimit: 6 }
+            },
+            y: {
+              title: { display: true, text: '2020년 시작점 = 100' },
+              ticks: { callback: value => fmtNum.format(value) },
+              grid: { color: 'rgba(148,163,184,.22)' }
+            }
+          }
+        }
+      });
+      updateChart();
+    }
+
+    function bindControls() {
+      document.getElementById('intervalButtons').querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.interval = btn.dataset.interval;
+          document.getElementById('intervalButtons').querySelectorAll('button').forEach(b => b.classList.toggle('active', b === btn));
+          updateChart();
+        });
+      });
+
+      document.getElementById('selectCore').addEventListener('click', () => {
+        state.selected = new Set(['DGU_PORTFOLIO', 'KOSPI', 'SP500', 'NASDAQ']);
+        updateChart();
+      });
+      document.getElementById('selectAll').addEventListener('click', () => {
+        state.selected = new Set(state.data.assets.map(a => a.id));
+        updateChart();
+      });
+      document.getElementById('clearStocks').addEventListener('click', () => {
+        state.selected = new Set([...state.selected].filter(id => {
+          const a = state.data.assets.find(x => x.id === id);
+          return a && a.kind !== 'stock';
+        }));
+        if (!state.selected.size) state.selected.add('DGU_PORTFOLIO');
+        updateChart();
+      });
+    }
+
+    async function loadData() {
+      const notice = document.getElementById('notice');
+      try {
+        const res = await fetch('./data/portfolio.json?v=' + Date.now(), { cache: 'no-store' });
+        if (!res.ok) throw new Error('data/portfolio.json 파일이 아직 없습니다.');
+        const data = await res.json();
+        if (!data.series || !Object.keys(data.series).length) throw new Error('데이터가 비어 있습니다.');
+        state.data = data;
+        const meta = data.meta || {};
+        document.getElementById('updateText').textContent = `최근 갱신: ${meta.generatedAt || '-'} · 기준: ${meta.startRule || '시작점 100'}`;
+        renderSummary();
+        renderTable();
+        renderRangeButtons();
+        renderAssetFilter();
+        bindControls();
+        initChart();
+      } catch (err) {
+        notice.style.display = 'block';
+        notice.innerHTML = `<strong>데이터 준비 전입니다.</strong><br>${err.message}<br>GitHub Actions에서 <b>Update DGU Portfolio Data</b> workflow를 1회 수동 실행하면 실제 데이터가 생성됩니다.`;
+        document.getElementById('updateText').textContent = '데이터 파일이 아직 생성되지 않았습니다.';
+        renderRangeButtons();
+      }
+    }
+
+    loadData();
+  </script>
+</body>
+</html>
