@@ -32,6 +32,8 @@ class Security:
     market: str
 
 STOCKS: List[Security] = [
+    Security("SAMSUNG_ELEC", "005930.KS", "삼성전자", "stock", "KRX"),
+    Security("SKHYNIX", "000660.KS", "SK하이닉스", "stock", "KRX"),
     Security("KIA", "000270.KS", "기아", "stock", "KRX"),
     Security("SHINHAN", "055550.KS", "신한지주", "stock", "KRX"),
     Security("AMOREPACIFIC", "090430.KS", "아모레퍼시픽", "stock", "KRX"),

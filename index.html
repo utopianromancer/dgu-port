@@ -4,27 +4,26 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>DGU Portfolio</title>
-<meta name="description" content="동국대 동기들이 다니는 회사 종목으로 구성한 DGU 포트폴리오입니다. 2020년 이후 수익률을 KOSPI, S&P 500, Nasdaq과 비교해 확인할 수 있습니다." />
-
-<!-- Open Graph -->
-<meta property="og:type" content="website" />
-<meta property="og:site_name" content="DGU Portfolio" />
-<meta property="og:title" content="DGU Portfolio" />
-<meta property="og:description" content="더 열심히 일해라, 대한민국 산업의 역군들" />
-<meta property="og:url" content="https://utopianromancer.github.io/dgu-port/" />
-<meta property="og:image" content="https://utopianromancer.github.io/dgu-port/og-image.png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="DGU Portfolio dashboard preview image" />
-<meta property="og:locale" content="ko_KR" />
-
-<!-- Twitter / X Card -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="DGU Portfolio" />
-<meta name="twitter:description" content="동더 열심히 일해라, 대한민국 산업의 역군들" />
-<meta name="twitter:image" content="https://utopianromancer.github.io/dgu-port/og-image.png" />
-  <meta name="description" content="DGU 주식 포트폴리오 대시보드" />
+  <meta name="description" content="동국대 동기들이 다니는 회사 종목으로 구성한 DGU 포트폴리오입니다. 2020년 이후 수익률을 KOSPI, S&P 500, Nasdaq과 비교해 확인할 수 있습니다." />
   <meta name="theme-color" content="#111827" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="DGU Portfolio" />
+  <meta property="og:title" content="DGU Portfolio" />
+  <meta property="og:description" content="동국대 동기들이 다니는 회사 종목으로 구성한 DGU 포트폴리오입니다. 2020년 이후 수익률을 KOSPI, S&P 500, Nasdaq과 비교해 확인할 수 있습니다." />
+  <meta property="og:url" content="https://utopianromancer.github.io/dgu-port/" />
+  <meta property="og:image" content="https://utopianromancer.github.io/dgu-port/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="DGU Portfolio dashboard preview image" />
+  <meta property="og:locale" content="ko_KR" />
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="DGU Portfolio" />
+  <meta name="twitter:description" content="동국대 동기들이 다니는 회사 종목으로 구성한 DGU 포트폴리오입니다. 2020년 이후 수익률을 KOSPI, S&P 500, Nasdaq과 비교해 확인할 수 있습니다." />
+  <meta name="twitter:image" content="https://utopianromancer.github.io/dgu-port/og-image.png" />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
@@ -172,16 +171,21 @@
     }
 
     .segmented {
-      display: inline-flex;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      width: 100%;
       background: #f3f4f6;
       padding: 4px;
       border-radius: 999px;
       border: 1px solid var(--line);
+      gap: 2px;
     }
     .segmented button {
       border: 0;
       background: transparent;
-      padding: 8px 12px;
+      padding: 8px 10px;
+      min-width: 0;
+      text-align: center;
     }
     .segmented button.active { background: #fff; color: var(--text); box-shadow: 0 5px 14px rgba(15,23,42,.08); }
 
@@ -290,6 +294,7 @@
       header { grid-template-columns: 1.1fr .9fr; align-items: end; }
       .summary-grid { grid-template-columns: repeat(4, 1fr); }
       .toolbar { grid-template-columns: 1fr auto; align-items: center; }
+      .segmented { width: auto; min-width: 190px; }
       .asset-filter { grid-template-columns: repeat(4, minmax(0, 1fr)); }
       .panel { padding: 18px; }
     }
@@ -301,7 +306,7 @@
       <div>
         <div class="eyebrow">🎓 DGU Portfolio · base 100</div>
         <h1>DGU Portfolio</h1>
-        <p class="subtitle">2020년 1월 2일 시작점 100으로 맞춰 종목별 성장률을 비교합니다. DGU 포트폴리오는 각 구성 종목 1주씩 매수한 것으로 계산합니다.</p>
+        <p class="subtitle">2020년 이후 첫 거래일 종가를 시작점 100으로 맞춰 종목별 성장률을 비교합니다. DGU 포트폴리오는 각 구성 종목 1주씩 매수한 것으로 계산합니다.</p>
       </div>
       <p class="subtitle" id="updateText">데이터를 불러오는 중입니다.</p>
     </header>
@@ -332,12 +337,13 @@
         <div class="toolbar-row" id="rangeButtons" aria-label="조회 기간 선택"></div>
         <div class="segmented" id="intervalButtons" aria-label="집계 단위 선택">
           <button data-interval="day" class="active">일</button>
+          <button data-interval="week">주</button>
           <button data-interval="month">월</button>
           <button data-interval="year">년</button>
         </div>
       </div>
       <div class="toolbar-row" style="margin-bottom:12px">
-        <button id="selectCore" class="active">대표선만</button>
+        <button id="selectCore" class="active">기본 표시</button>
         <button id="selectAll">전체 표시</button>
         <button id="clearStocks">개별종목 숨김</button>
       </div>
@@ -394,8 +400,10 @@
       chart: null,
       range: 'MAX',
       interval: 'day',
-      selected: new Set(['DGU_PORTFOLIO', 'KOSPI', 'SP500', 'NASDAQ'])
+      selected: new Set(['DGU_PORTFOLIO', 'KIA', 'SHINHAN', 'AMOREPACIFIC', 'SKYLIFE', 'CJENM', 'SHINWON', 'DONGYANG_EXP', 'UNID', 'KOSPI'])
     };
+
+    const DEFAULT_SELECTED = ['DGU_PORTFOLIO', 'KIA', 'SHINHAN', 'AMOREPACIFIC', 'SKYLIFE', 'CJENM', 'SHINWON', 'DONGYANG_EXP', 'UNID', 'KOSPI'];
 
     const RANGES = [
       ['1M', '1개월'], ['3M', '3개월'], ['6M', '6개월'], ['YTD', 'YTD'],
@@ -404,7 +412,9 @@
 
     const COLORS = {
       DGU_PORTFOLIO: '#111827',
-      KOSPI: '#2563eb',
+      SAMSUNG_ELEC: '#2563eb',
+      SKHYNIX: '#dc2626',
+      KOSPI: '#0ea5e9',
       SP500: '#7c3aed',
       NASDAQ: '#db2777',
       KIA: '#0891b2',
@@ -451,12 +461,23 @@
       return toDate('2020-01-01');
     }
 
+    function weekBucketKey(dateStr) {
+      const d = toDate(dateStr);
+      const monday = new Date(d);
+      const dayFromMonday = (monday.getDay() + 6) % 7;
+      monday.setDate(monday.getDate() - dayFromMonday);
+      const y = monday.getFullYear();
+      const m = String(monday.getMonth() + 1).padStart(2, '0');
+      const day = String(monday.getDate()).padStart(2, '0');
+      return `${y}-${m}-${day}`;
+    }
+
     function resample(rows, interval) {
       if (interval === 'day') return rows;
       const buckets = new Map();
       for (const row of rows) {
         const [date] = row;
-        const key = interval === 'month' ? date.slice(0, 7) : date.slice(0, 4);
+        const key = interval === 'week' ? weekBucketKey(date) : interval === 'month' ? date.slice(0, 7) : date.slice(0, 4);
         buckets.set(key, row); // last trading point in bucket
       }
       return Array.from(buckets.values());
@@ -522,8 +543,8 @@
 
     function renderSummary() {
       const dgu = state.data.metrics.find(m => m.id === 'DGU_PORTFOLIO');
-      const stockMetrics = state.data.metrics.filter(m => m.kind === 'stock');
-      const best = stockMetrics.slice().sort((a,b) => b.returnPct - a.returnPct)[0];
+      const selectedStockMetrics = state.data.metrics.filter(m => m.kind === 'stock' && state.selected.has(m.id));
+      const best = selectedStockMetrics.slice().sort((a,b) => b.returnPct - a.returnPct)[0];
 
       document.getElementById('sumReturn').textContent = formatPct(dgu?.returnPct);
       document.getElementById('sumReturn').className = `summary-value ${pctClass(dgu?.returnPct)}`;
@@ -572,6 +593,7 @@
       state.chart.options.scales.x.time.unit = state.interval === 'day' ? false : state.interval;
       state.chart.update();
       renderAssetFilter();
+      renderSummary();
     }
 
     function initChart() {
@@ -622,7 +644,7 @@
       });
 
       document.getElementById('selectCore').addEventListener('click', () => {
-        state.selected = new Set(['DGU_PORTFOLIO', 'KOSPI', 'SP500', 'NASDAQ']);
+        state.selected = new Set(DEFAULT_SELECTED);
         updateChart();
       });
       document.getElementById('selectAll').addEventListener('click', () => {

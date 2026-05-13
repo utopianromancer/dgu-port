@@ -4,7 +4,7 @@
 
 ## 구성
 
-- `index.html`: 모바일 우선 차트/표 UI
+- `index.html`: 모바일 우선 차트/표 UI, 일/주/월/년 단위 보기
 - `scripts/update_data.py`: Yahoo Finance 데이터를 yfinance로 내려받아 `data/portfolio.json` 생성
 - `.github/workflows/update-dgu-portfolio.yml`: 매일 한국시간 00:10 자동 갱신
 - `data/portfolio.json`: 자동 생성되는 실제 차트 데이터
@@ -21,6 +21,8 @@
 
 | 이름 | Yahoo Finance 티커 |
 |---|---|
+| 삼성전자 | 005930.KS |
+| SK하이닉스 | 000660.KS |
 | 기아 | 000270.KS |
 | 신한지주 | 055550.KS |
 | 아모레퍼시픽 | 090430.KS |
@@ -57,9 +59,4 @@ python -m http.server 8000
 
 ## 참고
 
-GitHub Actions 스케줄이 사용하는 `timezone` 옵션이 계정/환경에서 작동하지 않으면 `.github/workflows/update-dgu-portfolio.yml`에서 아래처럼 바꾸세요.
-
-```yaml
-schedule:
-  - cron: '10 15 * * *' # UTC 15:10 = 한국시간 00:10
-```
+GitHub Actions의 cron은 UTC 기준입니다. 이 프로젝트는 `cron: '10 15 * * *'`로 설정되어 있으며, 이는 한국시간 00:10입니다.
