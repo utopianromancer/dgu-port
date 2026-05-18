@@ -5,7 +5,7 @@
     "baseValue": 100,
     "priceField": "Close",
     "currencyNote": "국내 종목은 KRW, 미국 지수는 index level. 차트는 모두 시작점 100으로 정규화.",
-    "generatedAt": "2026-05-18T01:08:26+09:00",
+    "generatedAt": "2026-05-19T02:36:48+09:00",
     "timezone": "Asia/Seoul",
     "source": "Yahoo Finance via yfinance"
   },
@@ -139,13 +139,13 @@
       "market": "CUSTOM",
       "startDate": "2020-01-02",
       "startPrice": 855923.8672,
-      "latestDate": "2026-05-15",
-      "latestPrice": 4161882.0,
+      "latestDate": "2026-05-18",
+      "latestPrice": 4160482.0,
       "initialShares": "각 종목 1주",
       "initialInvested": 855923.8672,
-      "currentValue": 4161882.0,
-      "profit": 3305958.1328,
-      "returnPct": 386.2444
+      "currentValue": 4160482.0,
+      "profit": 3304558.1328,
+      "returnPct": 386.0808
     },
     {
       "id": "SAMSUNG_ELEC",
@@ -251,13 +251,13 @@
       "market": "KOSDAQ",
       "startDate": "2020-01-02",
       "startPrice": 155600.0,
-      "latestDate": "2026-05-15",
-      "latestPrice": 43900.0,
+      "latestDate": "2026-05-18",
+      "latestPrice": 42500.0,
       "initialShares": 1,
       "initialInvested": 155600.0,
-      "currentValue": 43900.0,
-      "profit": -111700.0,
-      "returnPct": -71.7866
+      "currentValue": 42500.0,
+      "profit": -113100.0,
+      "returnPct": -72.6864
     },
     {
       "id": "SHINWON",
@@ -379,13 +379,13 @@
       "market": "INDEX",
       "startDate": "2020-01-02",
       "startPrice": 3257.8501,
-      "latestDate": "2026-05-15",
-      "latestPrice": 7408.5,
+      "latestDate": "2026-05-18",
+      "latestPrice": 7385.7002,
       "initialShares": null,
       "initialInvested": 3257.8501,
-      "currentValue": 7408.5,
-      "profit": 4150.6499,
-      "returnPct": 127.4046
+      "currentValue": 7385.7002,
+      "profit": 4127.8501,
+      "returnPct": 126.7047
     },
     {
       "id": "NASDAQ",
@@ -395,13 +395,13 @@
       "market": "INDEX",
       "startDate": "2020-01-02",
       "startPrice": 9092.1904,
-      "latestDate": "2026-05-15",
-      "latestPrice": 26225.1406,
+      "latestDate": "2026-05-18",
+      "latestPrice": 26022.0723,
       "initialShares": null,
       "initialInvested": 9092.1904,
-      "currentValue": 26225.1406,
-      "profit": 17132.9502,
-      "returnPct": 188.4359
+      "currentValue": 26022.0723,
+      "profit": 16929.8818,
+      "returnPct": 186.2025
     }
   ],
   "series": {
@@ -55012,6 +55012,11 @@
         "2026-05-15",
         28.2134,
         43900.0
+      ],
+      [
+        "2026-05-18",
+        27.3136,
+        42500.0
       ]
     ],
     "SHINWON": [
@@ -117638,6 +117643,11 @@
         "2026-05-15",
         227.4046,
         7408.5
+      ],
+      [
+        "2026-05-18",
+        226.7047,
+        7385.7002
       ]
     ],
     "NASDAQ": [
@@ -125645,6 +125655,11 @@
         "2026-05-15",
         288.4359,
         26225.1406
+      ],
+      [
+        "2026-05-18",
+        286.2025,
+        26022.0723
       ]
     ],
     "DGU_PORTFOLIO": [
@@ -133452,6 +133467,11 @@
         "2026-05-15",
         486.2444,
         4161882.0
+      ],
+      [
+        "2026-05-18",
+        486.0808,
+        4160482.0
       ]
     ]
   }
