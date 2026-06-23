@@ -5,7 +5,7 @@
     "baseValue": 100,
     "priceField": "Close",
     "currencyNote": "국내 종목은 KRW, 미국 지수는 index level. 차트는 모두 시작점 100으로 정규화.",
-    "generatedAt": "2026-06-23T03:53:01+09:00",
+    "generatedAt": "2026-06-24T02:21:41+09:00",
     "timezone": "Asia/Seoul",
     "source": "Yahoo Finance via yfinance"
   },
@@ -363,13 +363,13 @@
       "market": "INDEX",
       "startDate": "2020-01-02",
       "startPrice": 2175.1699,
-      "latestDate": "2026-06-19",
-      "latestPrice": 9052.4199,
+      "latestDate": "2026-06-22",
+      "latestPrice": 9114.5498,
       "initialShares": null,
       "initialInvested": 2175.1699,
-      "currentValue": 9052.4199,
-      "profit": 6877.25,
-      "returnPct": 316.1707
+      "currentValue": 9114.5498,
+      "profit": 6939.3799,
+      "returnPct": 319.027
     },
     {
       "id": "SP500",
@@ -379,13 +379,13 @@
       "market": "INDEX",
       "startDate": "2020-01-02",
       "startPrice": 3257.8501,
-      "latestDate": "2026-06-22",
-      "latestPrice": 7467.6299,
+      "latestDate": "2026-06-23",
+      "latestPrice": 7405.21,
       "initialShares": null,
       "initialInvested": 3257.8501,
-      "currentValue": 7467.6299,
-      "profit": 4209.7798,
-      "returnPct": 129.2196
+      "currentValue": 7405.21,
+      "profit": 4147.3599,
+      "returnPct": 127.3036
     },
     {
       "id": "NASDAQ",
@@ -395,13 +395,13 @@
       "market": "INDEX",
       "startDate": "2020-01-02",
       "startPrice": 9092.1904,
-      "latestDate": "2026-06-22",
-      "latestPrice": 26184.6406,
+      "latestDate": "2026-06-23",
+      "latestPrice": 25809.6504,
       "initialShares": null,
       "initialInvested": 9092.1904,
-      "currentValue": 26184.6406,
-      "profit": 17092.4502,
-      "returnPct": 187.9905
+      "currentValue": 25809.6504,
+      "profit": 16717.46,
+      "returnPct": 183.8661
     }
   ],
   "series": {
@@ -111311,6 +111311,11 @@
         "2026-06-19",
         416.1707,
         9052.4199
+      ],
+      [
+        "2026-06-22",
+        419.027,
+        9114.5498
       ]
     ],
     "SP500": [
@@ -119436,8 +119441,13 @@
       ],
       [
         "2026-06-22",
-        229.2196,
-        7467.6299
+        229.378,
+        7472.79
+      ],
+      [
+        "2026-06-23",
+        227.3036,
+        7405.21
       ]
     ],
     "NASDAQ": [
@@ -127563,8 +127573,13 @@
       ],
       [
         "2026-06-22",
-        287.9905,
-        26184.6406
+        287.792,
+        26166.5996
+      ],
+      [
+        "2026-06-23",
+        283.8661,
+        25809.6504
       ]
     ],
     "DGU_PORTFOLIO": [
