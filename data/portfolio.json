@@ -5,7 +5,7 @@
     "baseValue": 100,
     "priceField": "Close",
     "currencyNote": "국내 종목은 KRW, 미국 지수는 index level. 차트는 모두 시작점 100으로 정규화.",
-    "generatedAt": "2026-06-28T01:17:45+09:00",
+    "generatedAt": "2026-06-29T01:22:20+09:00",
     "timezone": "Asia/Seoul",
     "source": "Yahoo Finance via yfinance"
   },
@@ -363,13 +363,13 @@
       "market": "INDEX",
       "startDate": "2020-01-02",
       "startPrice": 2175.1699,
-      "latestDate": "2026-06-25",
-      "latestPrice": 8930.2998,
+      "latestDate": "2026-06-26",
+      "latestPrice": 8411.21,
       "initialShares": null,
       "initialInvested": 2175.1699,
-      "currentValue": 8930.2998,
-      "profit": 6755.1299,
-      "returnPct": 310.5564
+      "currentValue": 8411.21,
+      "profit": 6236.04,
+      "returnPct": 286.6921
     },
     {
       "id": "SP500",
@@ -111591,6 +111591,11 @@
         "2026-06-25",
         410.5564,
         8930.2998
+      ],
+      [
+        "2026-06-26",
+        386.6921,
+        8411.21
       ]
     ],
     "SP500": [
