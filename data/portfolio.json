@@ -5,7 +5,7 @@
     "baseValue": 100,
     "priceField": "Close",
     "currencyNote": "국내 종목은 KRW, 미국 지수는 index level. 차트는 모두 시작점 100으로 정규화.",
-    "generatedAt": "2026-09-22T04:57:56+09:00",
+    "generatedAt": "2026-09-23T03:49:36+09:00",
     "timezone": "Asia/Seoul",
     "source": "Yahoo Finance via yfinance"
   },
@@ -139,13 +139,13 @@
       "market": "CUSTOM",
       "startDate": "2020-01-02",
       "startPrice": 855923.8672,
-      "latestDate": "2026-09-21",
-      "latestPrice": 3974730.0,
+      "latestDate": "2026-09-22",
+      "latestPrice": 3919891.0,
       "initialShares": "각 종목 1주",
       "initialInvested": 855923.8672,
-      "currentValue": 3974730.0,
-      "profit": 3118806.1328,
-      "returnPct": 364.3789
+      "currentValue": 3919891.0,
+      "profit": 3063967.1328,
+      "returnPct": 357.9719
     },
     {
       "id": "SAMSUNG_ELEC",
@@ -155,13 +155,13 @@
       "market": "KRX",
       "startDate": "2020-01-02",
       "startPrice": 55200.0,
-      "latestDate": "2026-09-21",
-      "latestPrice": 274000.0,
+      "latestDate": "2026-09-22",
+      "latestPrice": 276500.0,
       "initialShares": 1,
       "initialInvested": 55200.0,
-      "currentValue": 274000.0,
-      "profit": 218800.0,
-      "returnPct": 396.3768
+      "currentValue": 276500.0,
+      "profit": 221300.0,
+      "returnPct": 400.9058
     },
     {
       "id": "SKHYNIX",
@@ -171,13 +171,13 @@
       "market": "KRX",
       "startDate": "2020-01-02",
       "startPrice": 94700.0,
-      "latestDate": "2026-09-21",
-      "latestPrice": 1868000.0,
+      "latestDate": "2026-09-22",
+      "latestPrice": 1840000.0,
       "initialShares": 1,
       "initialInvested": 94700.0,
-      "currentValue": 1868000.0,
-      "profit": 1773300.0,
-      "returnPct": 1872.5449
+      "currentValue": 1840000.0,
+      "profit": 1745300.0,
+      "returnPct": 1842.9778
     },
     {
       "id": "KIA",
@@ -187,13 +187,13 @@
       "market": "KRX",
       "startDate": "2020-01-02",
       "startPrice": 42500.0,
-      "latestDate": "2026-09-21",
-      "latestPrice": 120000.0,
+      "latestDate": "2026-09-22",
+      "latestPrice": 118500.0,
       "initialShares": 1,
       "initialInvested": 42500.0,
-      "currentValue": 120000.0,
-      "profit": 77500.0,
-      "returnPct": 182.3529
+      "currentValue": 118500.0,
+      "profit": 76000.0,
+      "returnPct": 178.8235
     },
     {
       "id": "SHINHAN",
@@ -203,13 +203,13 @@
       "market": "KRX",
       "startDate": "2020-01-02",
       "startPrice": 42600.0,
-      "latestDate": "2026-09-21",
-      "latestPrice": 113100.0,
+      "latestDate": "2026-09-22",
+      "latestPrice": 113200.0,
       "initialShares": 1,
       "initialInvested": 42600.0,
-      "currentValue": 113100.0,
-      "profit": 70500.0,
-      "returnPct": 165.493
+      "currentValue": 113200.0,
+      "profit": 70600.0,
+      "returnPct": 165.7277
     },
     {
       "id": "AMOREPACIFIC",
@@ -219,13 +219,13 @@
       "market": "KRX",
       "startDate": "2020-01-02",
       "startPrice": 207500.0,
-      "latestDate": "2026-09-21",
-      "latestPrice": 145000.0,
+      "latestDate": "2026-09-22",
+      "latestPrice": 142000.0,
       "initialShares": 1,
       "initialInvested": 207500.0,
-      "currentValue": 145000.0,
-      "profit": -62500.0,
-      "returnPct": -30.1205
+      "currentValue": 142000.0,
+      "profit": -65500.0,
+      "returnPct": -31.5663
     },
     {
       "id": "SKYLIFE",
@@ -235,7 +235,7 @@
       "market": "KRX",
       "startDate": "2020-01-02",
       "startPrice": 8730.0,
-      "latestDate": "2026-09-21",
+      "latestDate": "2026-09-22",
       "latestPrice": 4000.0,
       "initialShares": 1,
       "initialInvested": 8730.0,
@@ -251,13 +251,13 @@
       "market": "KOSDAQ",
       "startDate": "2020-01-02",
       "startPrice": 155600.0,
-      "latestDate": "2026-09-21",
-      "latestPrice": 38600.0,
+      "latestDate": "2026-09-22",
+      "latestPrice": 37800.0,
       "initialShares": 1,
       "initialInvested": 155600.0,
-      "currentValue": 38600.0,
-      "profit": -117000.0,
-      "returnPct": -75.1928
+      "currentValue": 37800.0,
+      "profit": -117800.0,
+      "returnPct": -75.7069
     },
     {
       "id": "SHINWON",
@@ -267,13 +267,13 @@
       "market": "KRX",
       "startDate": "2020-01-02",
       "startPrice": 1840.0,
-      "latestDate": "2026-09-21",
-      "latestPrice": 1120.0,
+      "latestDate": "2026-09-22",
+      "latestPrice": 1121.0,
       "initialShares": 1,
       "initialInvested": 1840.0,
-      "currentValue": 1120.0,
-      "profit": -720.0,
-      "returnPct": -39.1304
+      "currentValue": 1121.0,
+      "profit": -719.0,
+      "returnPct": -39.0761
     },
     {
       "id": "DONGYANG_EXP",
@@ -283,13 +283,13 @@
       "market": "KRX",
       "startDate": "2020-01-02",
       "startPrice": 27100.0,
-      "latestDate": "2026-09-21",
-      "latestPrice": 24400.0,
+      "latestDate": "2026-09-22",
+      "latestPrice": 24050.0,
       "initialShares": 1,
       "initialInvested": 27100.0,
-      "currentValue": 24400.0,
-      "profit": -2700.0,
-      "returnPct": -9.9631
+      "currentValue": 24050.0,
+      "profit": -3050.0,
+      "returnPct": -11.2546
     },
     {
       "id": "UNID",
@@ -299,13 +299,13 @@
       "market": "KRX",
       "startDate": "2020-01-02",
       "startPrice": 59213.8672,
-      "latestDate": "2026-09-21",
-      "latestPrice": 60300.0,
+      "latestDate": "2026-09-22",
+      "latestPrice": 60100.0,
       "initialShares": 1,
       "initialInvested": 59213.8672,
-      "currentValue": 60300.0,
-      "profit": 1086.1328,
-      "returnPct": 1.8343
+      "currentValue": 60100.0,
+      "profit": 886.1328,
+      "returnPct": 1.4965
     },
     {
       "id": "HANSSEM",
@@ -315,13 +315,13 @@
       "market": "KRX",
       "startDate": "2020-01-02",
       "startPrice": 66700.0,
-      "latestDate": "2026-09-21",
-      "latestPrice": 39250.0,
+      "latestDate": "2026-09-22",
+      "latestPrice": 39650.0,
       "initialShares": 1,
       "initialInvested": 66700.0,
-      "currentValue": 39250.0,
-      "profit": -27450.0,
-      "returnPct": -41.1544
+      "currentValue": 39650.0,
+      "profit": -27050.0,
+      "returnPct": -40.5547
     },
     {
       "id": "SEOYONEHWA",
@@ -331,13 +331,13 @@
       "market": "KRX",
       "startDate": "2020-01-02",
       "startPrice": 5140.0,
-      "latestDate": "2026-09-21",
-      "latestPrice": 10960.0,
+      "latestDate": "2026-09-22",
+      "latestPrice": 10970.0,
       "initialShares": 1,
       "initialInvested": 5140.0,
-      "currentValue": 10960.0,
-      "profit": 5820.0,
-      "returnPct": 113.2296
+      "currentValue": 10970.0,
+      "profit": 5830.0,
+      "returnPct": 113.4241
     },
     {
       "id": "SAMYANGFOODS",
@@ -347,13 +347,13 @@
       "market": "KRX",
       "startDate": "2020-01-02",
       "startPrice": 89100.0,
-      "latestDate": "2026-09-21",
-      "latestPrice": 1276000.0,
+      "latestDate": "2026-09-22",
+      "latestPrice": 1252000.0,
       "initialShares": 1,
       "initialInvested": 89100.0,
-      "currentValue": 1276000.0,
-      "profit": 1186900.0,
-      "returnPct": 1332.0988
+      "currentValue": 1252000.0,
+      "profit": 1162900.0,
+      "returnPct": 1305.1627
     },
     {
       "id": "KOSPI",
@@ -363,13 +363,13 @@
       "market": "INDEX",
       "startDate": "2020-01-02",
       "startPrice": 2175.1699,
-      "latestDate": "2026-09-18",
-      "latestPrice": 6894.23,
+      "latestDate": "2026-09-21",
+      "latestPrice": 7007.7202,
       "initialShares": null,
       "initialInvested": 2175.1699,
-      "currentValue": 6894.23,
-      "profit": 4719.0601,
-      "returnPct": 216.9513
+      "currentValue": 7007.7202,
+      "profit": 4832.5503,
+      "returnPct": 222.1689
     },
     {
       "id": "SP500",
@@ -379,13 +379,13 @@
       "market": "INDEX",
       "startDate": "2020-01-02",
       "startPrice": 3257.8501,
-      "latestDate": "2026-09-21",
-      "latestPrice": 7768.6499,
+      "latestDate": "2026-09-22",
+      "latestPrice": 7771.8398,
       "initialShares": null,
       "initialInvested": 3257.8501,
-      "currentValue": 7768.6499,
-      "profit": 4510.7998,
-      "returnPct": 138.4594
+      "currentValue": 7771.8398,
+      "profit": 4513.9897,
+      "returnPct": 138.5573
     },
     {
       "id": "NASDAQ",
@@ -395,13 +395,13 @@
       "market": "INDEX",
       "startDate": "2020-01-02",
       "startPrice": 9092.1904,
-      "latestDate": "2026-09-21",
-      "latestPrice": 27132.457,
+      "latestDate": "2026-09-22",
+      "latestPrice": 27248.3027,
       "initialShares": null,
       "initialInvested": 9092.1904,
-      "currentValue": 27132.457,
-      "profit": 18040.2666,
-      "returnPct": 198.415
+      "currentValue": 27248.3027,
+      "profit": 18156.1123,
+      "returnPct": 199.6891
     }
   ],
   "series": {
@@ -8640,6 +8640,11 @@
         "2026-09-21",
         496.3768,
         274000.0
+      ],
+      [
+        "2026-09-22",
+        500.9058,
+        276500.0
       ]
     ],
     "SKHYNIX": [
@@ -16877,6 +16882,11 @@
         "2026-09-21",
         1972.5449,
         1868000.0
+      ],
+      [
+        "2026-09-22",
+        1942.9778,
+        1840000.0
       ]
     ],
     "KIA": [
@@ -25114,6 +25124,11 @@
         "2026-09-21",
         282.3529,
         120000.0
+      ],
+      [
+        "2026-09-22",
+        278.8235,
+        118500.0
       ]
     ],
     "SHINHAN": [
@@ -33351,6 +33366,11 @@
         "2026-09-21",
         265.493,
         113100.0
+      ],
+      [
+        "2026-09-22",
+        265.7277,
+        113200.0
       ]
     ],
     "AMOREPACIFIC": [
@@ -41588,6 +41608,11 @@
         "2026-09-21",
         69.8795,
         145000.0
+      ],
+      [
+        "2026-09-22",
+        68.4337,
+        142000.0
       ]
     ],
     "SKYLIFE": [
@@ -49823,6 +49848,11 @@
       ],
       [
         "2026-09-21",
+        45.819,
+        4000.0
+      ],
+      [
+        "2026-09-22",
         45.819,
         4000.0
       ]
@@ -58062,6 +58092,11 @@
         "2026-09-21",
         24.8072,
         38600.0
+      ],
+      [
+        "2026-09-22",
+        24.2931,
+        37800.0
       ]
     ],
     "SHINWON": [
@@ -66299,6 +66334,11 @@
         "2026-09-21",
         60.8696,
         1120.0
+      ],
+      [
+        "2026-09-22",
+        60.9239,
+        1121.0
       ]
     ],
     "DONGYANG_EXP": [
@@ -74536,6 +74576,11 @@
         "2026-09-21",
         90.0369,
         24400.0
+      ],
+      [
+        "2026-09-22",
+        88.7454,
+        24050.0
       ]
     ],
     "UNID": [
@@ -82773,6 +82818,11 @@
         "2026-09-21",
         101.8343,
         60300.0
+      ],
+      [
+        "2026-09-22",
+        101.4965,
+        60100.0
       ]
     ],
     "HANSSEM": [
@@ -91010,6 +91060,11 @@
         "2026-09-21",
         58.8456,
         39250.0
+      ],
+      [
+        "2026-09-22",
+        59.4453,
+        39650.0
       ]
     ],
     "SEOYONEHWA": [
@@ -99247,6 +99302,11 @@
         "2026-09-21",
         213.2296,
         10960.0
+      ],
+      [
+        "2026-09-22",
+        213.4241,
+        10970.0
       ]
     ],
     "SAMYANGFOODS": [
@@ -107484,6 +107544,11 @@
         "2026-09-21",
         1432.0988,
         1276000.0
+      ],
+      [
+        "2026-09-22",
+        1405.1627,
+        1252000.0
       ]
     ],
     "KOSPI": [
@@ -115721,6 +115786,11 @@
         "2026-09-18",
         316.9513,
         6894.23
+      ],
+      [
+        "2026-09-21",
+        322.1689,
+        7007.7202
       ]
     ],
     "SP500": [
@@ -124161,8 +124231,13 @@
       ],
       [
         "2026-09-21",
-        238.4594,
-        7768.6499
+        238.3382,
+        7764.7002
+      ],
+      [
+        "2026-09-22",
+        238.5573,
+        7771.8398
       ]
     ],
     "NASDAQ": [
@@ -132603,8 +132678,13 @@
       ],
       [
         "2026-09-21",
-        298.415,
-        27132.457
+        298.3009,
+        27122.0898
+      ],
+      [
+        "2026-09-22",
+        299.6891,
+        27248.3027
       ]
     ],
     "DGU_PORTFOLIO": [
@@ -140842,6 +140922,11 @@
         "2026-09-21",
         464.3789,
         3974730.0
+      ],
+      [
+        "2026-09-22",
+        457.9719,
+        3919891.0
       ]
     ]
   }
