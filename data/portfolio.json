@@ -5,7 +5,7 @@
     "baseValue": 100,
     "priceField": "Close",
     "currencyNote": "국내 종목은 KRW, 미국 지수는 index level. 차트는 모두 시작점 100으로 정규화.",
-    "generatedAt": "2026-09-26T04:13:29+09:00",
+    "generatedAt": "2026-09-27T03:33:18+09:00",
     "timezone": "Asia/Seoul",
     "source": "Yahoo Finance via yfinance"
   },
@@ -380,12 +380,12 @@
       "startDate": "2020-01-02",
       "startPrice": 3257.8501,
       "latestDate": "2026-09-25",
-      "latestPrice": 7739.21,
+      "latestPrice": 7743.4102,
       "initialShares": null,
       "initialInvested": 3257.8501,
-      "currentValue": 7739.21,
-      "profit": 4481.3599,
-      "returnPct": 137.5557
+      "currentValue": 7743.4102,
+      "profit": 4485.5601,
+      "returnPct": 137.6847
     },
     {
       "id": "NASDAQ",
@@ -396,12 +396,12 @@
       "startDate": "2020-01-02",
       "startPrice": 9092.1904,
       "latestDate": "2026-09-25",
-      "latestPrice": 27061.5684,
+      "latestPrice": 27068.7207,
       "initialShares": null,
       "initialInvested": 9092.1904,
-      "currentValue": 27061.5684,
-      "profit": 17969.3779,
-      "returnPct": 197.6353
+      "currentValue": 27068.7207,
+      "profit": 17976.5303,
+      "returnPct": 197.714
     }
   ],
   "series": {
@@ -124326,8 +124326,8 @@
       ],
       [
         "2026-09-25",
-        237.5557,
-        7739.21
+        237.6847,
+        7743.4102
       ]
     ],
     "NASDAQ": [
@@ -132788,8 +132788,8 @@
       ],
       [
         "2026-09-25",
-        297.6353,
-        27061.5684
+        297.714,
+        27068.7207
       ]
     ],
     "DGU_PORTFOLIO": [
